@@ -1,0 +1,11 @@
+# gradle/libs.versions.toml
+
+[versions]
+pdfboxAndroidVersion = "2.0.27.0"
+
+
+[libraries]
+tom-roush-pdfbox-android = { module = "com.tom-roush:pdfbox-android", version.ref = "pdfboxAndroidVersion" }
+
+
+[plugins]
