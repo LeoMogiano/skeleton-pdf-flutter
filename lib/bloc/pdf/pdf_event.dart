@@ -3,7 +3,6 @@ part of 'pdf_bloc.dart';
 @immutable
 sealed class PdfEvent {}
 
-
 class PdfLoadEvent extends PdfEvent {
   PdfLoadEvent();
 }
@@ -16,14 +15,7 @@ class PdfSetCompressionLevelEvent extends PdfEvent {
 }
 
 class PdfCompressEvent extends PdfEvent {
-
-  PdfCompressEvent(this.filePath, this.level, {
-    this.originalFileSize = 0.0,
-  });
-
-  final String filePath;
-  final CompressionLevel level;
-  final double originalFileSize;
+  PdfCompressEvent();
 }
 
 class PdfResetEvent extends PdfEvent {

@@ -9,11 +9,11 @@ class CompressInfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pdfState = context.watch<PdfBloc>().state as PdfCompressed;
+    final pdfState = context.watch<PdfBloc>().state;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Compresión completada'),
+        title: const Text('Compresión completada'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -25,14 +25,11 @@ class CompressInfoScreen extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
             ),
-
             Text(
               'Se ha guardado en la carpeta de descargas.',
               textAlign: TextAlign.center,
-
               style: TextStyle(fontSize: 16.sp, decoration: TextDecoration.underline),
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               spacing: 20,
@@ -55,13 +52,12 @@ class CompressInfoScreen extends StatelessWidget {
                           style: TextStyle(fontSize: 16.4.sp, fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          '${(pdfState.originalFileSize / 1024).toStringAsFixed(2)} MB',
+                          '${(pdfState.currentPdf?.originalFileSize)!.toStringAsFixed(2)} MB',
                           textAlign: TextAlign.start,
                           style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
                         ),
-                        //red percentage
                         Text(
-                          '-${(pdfState.compressionPercentage).toStringAsFixed(2)}%',
+                          '-${(pdfState.currentPdf?.compressionPercentage)!.toStringAsFixed(2)}%',
                           textAlign: TextAlign.start,
                           style: TextStyle(fontSize: 16.sp, color: Colors.red),
                         ),
@@ -88,7 +84,7 @@ class CompressInfoScreen extends StatelessWidget {
                           style: TextStyle(fontSize: 16.4.sp, fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          '${(pdfState.compressedFileSize).toStringAsFixed(2)} MB',
+                          '${(pdfState.currentPdf?.compressedFileSize)!.toStringAsFixed(2)} MB',
                           textAlign: TextAlign.start,
                           style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
                         ),
@@ -99,16 +95,38 @@ class CompressInfoScreen extends StatelessWidget {
               ],
             ),
 
-            // boton comprimir nuevo
-            ElevatedButton(
-              onPressed: () {
-                // context.read<PdfBloc>().add(PdfResetEvent());
-                appRouter.goNamed(Routes.home.name);
-              },
-              child: Text('Comprimir otro PDF'),
-              style: ElevatedButton.styleFrom(
-                textStyle: TextStyle(fontSize: 16.sp),
-              ),
+            Column(
+              spacing: 5,
+              children: [
+                ElevatedButton(
+                  onPressed: () => appRouter.goNamed(Routes.home.name),
+                  style: ElevatedButton.styleFrom(
+                    textStyle: TextStyle(fontSize: 16.sp),
+                  ),
+                  child: const Text('Comprimir otro PDF'),
+                ),
+                // ver
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    textStyle: TextStyle(fontSize: 16.sp),
+                  ),
+                  child: const Text('Ver PDF comprimido'),
+                ),
+
+                // Eliminar PDF
+                ElevatedButton(
+                  onPressed: () {
+                    context.read<PdfBloc>().add(PdfResetEvent());
+                    appRouter.goNamed(Routes.home.name);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    textStyle: TextStyle(fontSize: 16.sp),
+                    backgroundColor: Colors.red,
+                  ),
+                  child: const Text('Eliminar PDF comprimido'),
+                ),
+              ],
             ),
           ],
         ),

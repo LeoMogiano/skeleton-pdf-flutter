@@ -1,8 +1,9 @@
 class RouteItem {
-  final String route;
-  final String name;
 
   const RouteItem(this.route, this.name);
+  
+  final String route;
+  final String name;
 }
 
 class Routes {

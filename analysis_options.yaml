@@ -1,10 +1,14 @@
 include: package:very_good_analysis/analysis_options.yaml
-
 analyzer:
   errors:
     public_member_api_docs: ignore
-    lines_longer_than_80_chars: ignore # Puedes eliminar esta línea, ya no es necesaria con line_length
+    lines_longer_than_80_chars: ignore
 
-linter:
-  rules:
-    line_length: 100 # <-- Aquí defines la longitud máxima de línea a 120
+# analyzer:
+#   errors:
+#     public_member_api_docs: ignore
+#     lines_longer_than_80_chars: ignore
+
+# linter:
+#   rules:
+#     line_length: 100

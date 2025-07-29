@@ -1,43 +1,41 @@
 part of 'pdf_bloc.dart';
 
 @immutable
-sealed class PdfState {}
+class PdfState extends Equatable {
 
-final class PdfInitial extends PdfState {}
-
-final class PdfLoading extends PdfState {}
-
-final class PdfLoaded extends PdfState {
-  PdfLoaded({
-    required this.filePath,
-    required this.fileSize,
-    this.level
+  const PdfState({
+    this.isLoading = false,
+    this.errorMessage,
+    this.currentPdf,
+    this.compressedPdfs = const [],
   });
+  final bool isLoading;
+  final String? errorMessage;
+  final PDFCompressed? currentPdf; // Información del PDF que se está procesando actualmente
+  final List<PDFCompressed> compressedPdfs;
 
-  final String filePath;
-  final double fileSize;
-  final CompressionLevel? level;
-}
+  PdfState copyWith({
+    bool? isLoading,
+    String? errorMessage,
+    PDFCompressed? currentPdf,
+    List<PDFCompressed>? compressedPdfs,
+  }) {
+    return PdfState(
+      isLoading: isLoading ?? this.isLoading,
+      errorMessage:
+          errorMessage ??
+          this.errorMessage, // Mantiene el valor actual si no se proporciona uno nuevo
+      currentPdf:
+          currentPdf ?? this.currentPdf, // Mantiene el valor actual si no se proporciona uno nuevo
+      compressedPdfs: compressedPdfs ?? this.compressedPdfs,
+    );
+  }
 
-final class PdfCompressed extends PdfState {
-  PdfCompressed({
-    required this.fileName,
-    required this.level,
-    required this.compressedFilePath,
-    required this.originalFileSize,
-    required this.compressedFileSize,
-  });
-
-  final String compressedFilePath;
-  final String fileName;
-  final CompressionLevel level;
-  final double originalFileSize;
-  final double compressedFileSize;
-  double get compressionPercentage => ((originalFileSize - compressedFileSize) / originalFileSize) * 100;
-}
-
-final class PdfError extends PdfState {
-  PdfError(this.message);
-
-  final String message;
+  @override
+  List<Object?> get props => [
+    isLoading,
+    errorMessage,
+    currentPdf,
+    compressedPdfs,
+  ];
 }

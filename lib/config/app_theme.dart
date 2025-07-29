@@ -1,4 +1,3 @@
-// creame un app theme
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -19,13 +18,14 @@ class AppTheme {
         ),
       ),
       // CircularProgressIndicator
-      progressIndicatorTheme: ProgressIndicatorThemeData(
-        color: const Color(0xFF47A8EB),
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
+        color: Color(0xFF47A8EB),
         // circularTrackColor: Colors.grey.withValues(alpha: 0.2),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           minimumSize: Size(90.w, 5.h),
+          elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),

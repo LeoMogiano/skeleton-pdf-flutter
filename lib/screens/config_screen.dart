@@ -9,7 +9,7 @@ class ConfigScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Configuración'), centerTitle: true),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -26,7 +26,7 @@ final appRouter = GoRouter(
             GoRoute(
               name: Routes.home.name,
               path: Routes.home.route,
-              builder: (context, state) => HomeScreen(),
+              builder: (context, state) => const HomeScreen(),
               routes: [
                 GoRoute(
                   name: Routes.compressLevel.name,

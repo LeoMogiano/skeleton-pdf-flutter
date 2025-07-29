@@ -5,23 +5,24 @@ import 'package:sizer/sizer.dart';
 import 'package:skeleton_pdf/bloc/pdf/pdf_bloc.dart';
 import 'package:skeleton_pdf/config/export_router.dart';
 import 'package:skeleton_pdf/services/pdf_service.dart';
+import 'package:skeleton_pdf/widgets/custom_snackbar.dart';
 
 class CompressionLevelScreen extends StatelessWidget {
   const CompressionLevelScreen({super.key});
 
-  bool _isSelected(PdfState state, CompressionLevel level) {
-    return state is PdfLoaded && state.level == level;
-  }
+  // bool _isSelected(PdfState state, CompressionLevel level) {
+  //   return state is PdfLoaded && state.level == level;
+  // }
 
   @override
   Widget build(BuildContext context) {
     final pdfState = context.watch<PdfBloc>().state;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Compresión de PDF'),
+        title: const Text('Compresión de PDF'),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: const EdgeInsets.all(20),
         child: Stack(
           children: [
             Column(
@@ -35,7 +36,7 @@ class CompressionLevelScreen extends StatelessWidget {
                 LevelWidget(
                   level: 'Baja',
                   description: 'Reducción de tamaño: 20-40%',
-                  isSelected: _isSelected(pdfState, CompressionLevel.low),
+                  isSelected: pdfState.currentPdf?.compressionLevel == CompressionLevel.low,
                   onTap: () => context.read<PdfBloc>().add(
                     PdfSetCompressionLevelEvent(
                       CompressionLevel.low,
@@ -45,7 +46,7 @@ class CompressionLevelScreen extends StatelessWidget {
                 LevelWidget(
                   level: 'Media',
                   description: 'Reducción de tamaño: 40-60%',
-                  isSelected: _isSelected(pdfState, CompressionLevel.medium),
+                  isSelected: pdfState.currentPdf?.compressionLevel == CompressionLevel.medium,
                   onTap: () => context.read<PdfBloc>().add(
                     PdfSetCompressionLevelEvent(
                       CompressionLevel.medium,
@@ -55,7 +56,7 @@ class CompressionLevelScreen extends StatelessWidget {
                 LevelWidget(
                   level: 'Alta',
                   description: 'Reducción de tamaño: 60-80%',
-                  isSelected: _isSelected(pdfState, CompressionLevel.high),
+                  isSelected: pdfState.currentPdf?.compressionLevel == CompressionLevel.high,
                   onTap: () => context.read<PdfBloc>().add(
                     PdfSetCompressionLevelEvent(
                       CompressionLevel.high,
@@ -69,33 +70,32 @@ class CompressionLevelScreen extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: BlocConsumer<PdfBloc, PdfState>(
                 listener: (context, state) {
-                  if (state is PdfCompressed) {
+                  if (state.currentPdf?.compressedFilePath != null) {
                     appRouter.goNamed(Routes.compressInfo.name);
-                  } else if (state is PdfError) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text(state.message)),
+                  } else if (state.errorMessage != null) {
+                    CustomSnackBar.show(
+                      context,
+                      message: state.errorMessage!,
+                      icon: Icons.error,
+                      backgroundColor: Colors.red,
                     );
                   }
                 },
                 builder: (context, state) {
-                  if (state is PdfLoading) {
+                  if (state.isLoading) {
                     return Padding(
                       padding: EdgeInsets.only(bottom: 2.5.h),
-                      child: CircularProgressIndicator(),
+                      child: const CircularProgressIndicator(),
                     );
                   }
 
-                  if (state is PdfLoaded) {
+                  if (state.currentPdf?.originalFilePath != null) {
                     return ElevatedButton(
-                      onPressed: () => context.read<PdfBloc>().add(
-                        PdfCompressEvent(
-                          state.filePath,
-                          state.level!,
-                          originalFileSize: state.fileSize,
-                        ),
-                      ),
+                      onPressed: () => context.read<PdfBloc>().add(PdfCompressEvent()),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: state.level == null ? Colors.grey : Colors.blue,
+                        backgroundColor: state.currentPdf?.compressionLevel == null
+                            ? Colors.grey
+                            : Colors.blue,
                       ),
                       child: Text(
                         'Comprimir PDF',
@@ -103,7 +103,7 @@ class CompressionLevelScreen extends StatelessWidget {
                       ),
                     );
                   }
-                  return SizedBox.shrink(); // No action needed
+                  return const SizedBox.shrink(); // No action needed
                 },
               ),
             ),
@@ -116,9 +116,7 @@ class CompressionLevelScreen extends StatelessWidget {
 
 class LevelWidget extends StatelessWidget {
   const LevelWidget({
-    super.key,
-    required this.level,
-    required this.description,
+    required this.level, required this.description, super.key,
     this.isSelected = false,
     this.onTap,
   });
@@ -150,7 +148,7 @@ class LevelWidget extends StatelessWidget {
             spacing: 12,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                 child: SvgPicture.asset(
                   'assets/svg/file.svg',
                   width: 22.sp,
@@ -164,7 +162,7 @@ class LevelWidget extends StatelessWidget {
                     level,
                     style: TextStyle(
                       fontSize: 15.6.sp,
-                      color: Color(0xFF0D171C),
+                      color: const Color(0xFF0D171C),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
