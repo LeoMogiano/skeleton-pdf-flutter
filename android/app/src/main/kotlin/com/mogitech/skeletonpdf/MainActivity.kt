@@ -1,10 +1,10 @@
-package com.mogitech.skeletonpdf.skeleton_pdf
+package com.mogitech.skeletonpdf
 
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
-import com.mogitech.skeletonpdf.skeleton_pdf.services.CompressionLevel // <--- ADD THIS LINE
-import com.mogitech.skeletonpdf.skeleton_pdf.services.PdfCompressorService // <--- ADD THIS LINE
+import com.mogitech.skeletonpdf.services.CompressionLevel // <--- ADD THIS LINE
+import com.mogitech.skeletonpdf.services.PdfCompressorService // <--- ADD THIS LINE
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodCall

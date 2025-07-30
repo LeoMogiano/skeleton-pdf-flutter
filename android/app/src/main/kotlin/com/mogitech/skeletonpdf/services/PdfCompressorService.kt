@@ -1,4 +1,4 @@
-package com.mogitech.skeletonpdf.skeleton_pdf.services
+package com.mogitech.skeletonpdf.services
 
 import android.content.ContentValues
 import android.content.Context

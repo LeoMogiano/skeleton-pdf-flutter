@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.mogitech.skeletonpdf.skeleton_pdf"
+    namespace = "com.mogitech.skeletonpdf"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
 
@@ -24,7 +24,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.mogitech.skeletonpdf.skeleton_pdf"
+        applicationId = "com.mogitech.skeletonpdf"
         manifestPlaceholders["appName"] = "SkeletonPDF"
         minSdk = 29
         targetSdk = flutter.targetSdkVersion
