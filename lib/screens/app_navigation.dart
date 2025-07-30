@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
+import 'package:skeleton_pdf/i18n/strings.g.dart';
 
 class AppNavigation extends StatelessWidget {
   const AppNavigation(this.navigationShell, {super.key});
@@ -21,15 +22,15 @@ class AppNavigation extends StatelessWidget {
           selectedFontSize: 15.sp,
           unselectedFontSize: 15.sp,
           backgroundColor: Colors.white,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          items: [
+            BottomNavigationBarItem(icon: const Icon(Icons.home), label: t.appNavigation.home),
             BottomNavigationBarItem(
-              icon: Icon(Icons.history),
-              label: 'Historial',
+              icon: const Icon(Icons.history),
+              label: t.appNavigation.history,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Configuración',
+              icon: const Icon(Icons.settings),
+              label: t.appNavigation.settings,
             ),
           ],
           currentIndex: navigationShell.currentIndex,

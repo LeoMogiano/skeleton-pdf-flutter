@@ -1,9 +1,9 @@
-// Widget separado para el contenido de la pantalla Home
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:skeleton_pdf/bloc/pdf/pdf_bloc.dart';
 import 'package:skeleton_pdf/config/export_router.dart';
+import 'package:skeleton_pdf/i18n/strings.g.dart';
 import 'package:skeleton_pdf/widgets/custom_snackbar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () => context.read<PdfBloc>().add(PdfLoadEvent()),
                   child: Text(
-                    'Seleccionar Archivo PDF',
+                    t.homeScreen.buttonText,
                     style: TextStyle(fontSize: 16.sp),
                   ),
                 ),

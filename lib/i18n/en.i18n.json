@@ -1,0 +1,52 @@
+{
+  "appNavigation": {
+    "home": "Home",
+    "history": "History",
+    "settings": "Settings"
+  },
+  "homeScreen": {
+    "buttonText": "Select PDF File"
+  },
+  "levelScreen": {
+    "title": "PDF Compression",
+    "subtitle": "Select a compression level:",
+    "levels": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "levelsDescription": {
+      "low": "Size Reduction: 20 - 40%",
+      "medium": "Size Reduction: 40 - 60%",
+      "high": "Size Reduction: 60 - 80%"
+    },
+    "buttonText": "Compress PDF"
+  },
+  "infoScreen": {
+    "title": "Compression Completed",
+    "subtitle": "File successfully compressed.",
+    "description": "It has been saved in the downloads folder.",
+    "originalSize": "Original size: ",
+    "compressedSize": "Compressed size: ",
+    "compressAnother": "Compress another PDF",
+    "viewCompressed": "View compressed PDF",
+    "deleteCompressed": "Delete compressed PDF"
+  },
+  "historyScreen": {
+    "title": "History",
+    "emptyState": "No compressed files yet."
+  },
+  "configScreen": {
+    "title": "Settings",
+    "not_configs": "No configurations currently available.",
+    "collaborators": "Collaborators",
+    "developer": "Developer",
+    "designer": "UI/UX Designer",
+    "tester": "Tester",
+    "language": "Language",
+    "languageOptions": {
+      "en": "English",
+      "es": "Spanish"
+    }
+  }
+}
