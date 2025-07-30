@@ -45,19 +45,19 @@ class _ConfigScreenState extends State<ConfigScreen> {
             ),
             SizedBox(height: 5.h),
             Text(
-              'Idioma',
+              t.configScreen.language,
               style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
             ),
             DropdownButton<String>(
               value: LocaleSettings.currentLocale.languageTag,
-              items: const [
+              items: [
                 DropdownMenuItem(
                   value: 'en',
-                  child: Text('English'),
+                  child: Text(t.configScreen.languageOptions.en),
                 ),
                 DropdownMenuItem(
                   value: 'es',
-                  child: Text('Español'),
+                  child: Text(t.configScreen.languageOptions.es),
                 ),
               ],
               onChanged: (String? newValue) {

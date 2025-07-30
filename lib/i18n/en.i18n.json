@@ -42,6 +42,11 @@
     "collaborators": "Collaborators",
     "developer": "Developer",
     "designer": "UI/UX Designer",
-    "tester": "Tester"
+    "tester": "Tester",
+    "language": "Language",
+    "languageOptions": {
+      "en": "English",
+      "es": "Spanish"
+    }
   }
 }

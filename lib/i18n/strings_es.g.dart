@@ -73,8 +73,8 @@ class _TranslationsLevelScreenEs implements TranslationsLevelScreenEn {
 	final TranslationsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Comprensión de PDF';
-	@override String get subtitle => 'Selecciona un nivel de comprensión:';
+	@override String get title => 'Compresión de PDF';
+	@override String get subtitle => 'Selecciona un nivel de compresión:';
 	@override late final _TranslationsLevelScreenLevelsEs levels = _TranslationsLevelScreenLevelsEs._(_root);
 	@override late final _TranslationsLevelScreenLevelsDescriptionEs levelsDescription = _TranslationsLevelScreenLevelsDescriptionEs._(_root);
 	@override String get buttonText => 'Comprimir PDF';
@@ -121,6 +121,8 @@ class _TranslationsConfigScreenEs implements TranslationsConfigScreenEn {
 	@override String get developer => 'Desarrollador';
 	@override String get designer => 'Diseñador de UI/UX';
 	@override String get tester => 'Tester';
+	@override String get language => 'Idioma';
+	@override late final _TranslationsConfigScreenLanguageOptionsEs languageOptions = _TranslationsConfigScreenLanguageOptionsEs._(_root);
 }
 
 // Path: levelScreen.levels
@@ -147,6 +149,17 @@ class _TranslationsLevelScreenLevelsDescriptionEs implements TranslationsLevelSc
 	@override String get high => 'Reducción de tamaño: 60 - 80%';
 }
 
+// Path: configScreen.languageOptions
+class _TranslationsConfigScreenLanguageOptionsEs implements TranslationsConfigScreenLanguageOptionsEn {
+	_TranslationsConfigScreenLanguageOptionsEs._(this._root);
+
+	final TranslationsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get en => 'Inglés';
+	@override String get es => 'Español';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 extension on TranslationsEs {
@@ -156,8 +169,8 @@ extension on TranslationsEs {
 			case 'appNavigation.history': return 'Historial';
 			case 'appNavigation.settings': return 'Configuración';
 			case 'homeScreen.buttonText': return 'Seleccionar Archivo PDF';
-			case 'levelScreen.title': return 'Comprensión de PDF';
-			case 'levelScreen.subtitle': return 'Selecciona un nivel de comprensión:';
+			case 'levelScreen.title': return 'Compresión de PDF';
+			case 'levelScreen.subtitle': return 'Selecciona un nivel de compresión:';
 			case 'levelScreen.levels.low': return 'Baja';
 			case 'levelScreen.levels.medium': return 'Media';
 			case 'levelScreen.levels.high': return 'Alta';
@@ -181,6 +194,9 @@ extension on TranslationsEs {
 			case 'configScreen.developer': return 'Desarrollador';
 			case 'configScreen.designer': return 'Diseñador de UI/UX';
 			case 'configScreen.tester': return 'Tester';
+			case 'configScreen.language': return 'Idioma';
+			case 'configScreen.languageOptions.en': return 'Inglés';
+			case 'configScreen.languageOptions.es': return 'Español';
 			default: return null;
 		}
 	}

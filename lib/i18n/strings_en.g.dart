@@ -124,6 +124,8 @@ class TranslationsConfigScreenEn {
 	String get developer => 'Developer';
 	String get designer => 'UI/UX Designer';
 	String get tester => 'Tester';
+	String get language => 'Language';
+	late final TranslationsConfigScreenLanguageOptionsEn languageOptions = TranslationsConfigScreenLanguageOptionsEn._(_root);
 }
 
 // Path: levelScreen.levels
@@ -148,6 +150,17 @@ class TranslationsLevelScreenLevelsDescriptionEn {
 	String get low => 'Size Reduction: 20 - 40%';
 	String get medium => 'Size Reduction: 40 - 60%';
 	String get high => 'Size Reduction: 60 - 80%';
+}
+
+// Path: configScreen.languageOptions
+class TranslationsConfigScreenLanguageOptionsEn {
+	TranslationsConfigScreenLanguageOptionsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get en => 'English';
+	String get es => 'Spanish';
 }
 
 /// Flat map(s) containing all translations.
@@ -184,6 +197,9 @@ extension on Translations {
 			case 'configScreen.developer': return 'Developer';
 			case 'configScreen.designer': return 'UI/UX Designer';
 			case 'configScreen.tester': return 'Tester';
+			case 'configScreen.language': return 'Language';
+			case 'configScreen.languageOptions.en': return 'English';
+			case 'configScreen.languageOptions.es': return 'Spanish';
 			default: return null;
 		}
 	}

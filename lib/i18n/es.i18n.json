@@ -8,8 +8,8 @@
     "buttonText": "Seleccionar Archivo PDF"
   },
   "levelScreen": {
-    "title": "Comprensión de PDF",
-    "subtitle": "Selecciona un nivel de comprensión:",
+    "title": "Compresión de PDF",
+    "subtitle": "Selecciona un nivel de compresión:",
     "levels": {
       "low": "Baja",
       "medium": "Media",
@@ -42,6 +42,11 @@
     "collaborators": "Colaboradores",
     "developer": "Desarrollador",
     "designer": "Diseñador de UI/UX",
-    "tester": "Tester"
+    "tester": "Tester",
+    "language": "Idioma",
+    "languageOptions": {
+      "en": "Inglés",
+      "es": "Español"
+    }
   }
 }
