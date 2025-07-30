@@ -1,42 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:skeleton_pdf/i18n/strings.g.dart';
 
-class ConfigScreen extends StatelessWidget {
+class ConfigScreen extends StatefulWidget {
   const ConfigScreen({super.key});
 
   @override
+  State<ConfigScreen> createState() => _ConfigScreenState();
+}
+
+class _ConfigScreenState extends State<ConfigScreen> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Configuración'), centerTitle: true),
+      appBar: AppBar(title: Text(t.configScreen.title), centerTitle: true),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // no hay configuraciones específicas en este momento
             Text(
-              'Actualmente no hay configuraciones disponibles.',
+              t.configScreen.not_configs,
               style: TextStyle(fontSize: 16, color: Colors.grey[600]),
             ),
             SizedBox(height: 5.h),
             Text(
-              'Colaboradores',
+              t.configScreen.collaborators,
               style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
             ),
-            const ListTile(
-              title: Text('Leo Mogiano'),
-              subtitle: Text('Desarrollador'),
+            ListTile(
+              title: const Text('Leo Mogiano'),
+              subtitle: Text(t.configScreen.developer),
               contentPadding: EdgeInsets.zero,
             ),
-            const ListTile(
-              title: Text('XXXX XXXX'),
-              subtitle: Text('Diseñador de UI/UX'),
+            ListTile(
+              title: const Text('XXXX XXXX'),
+              subtitle: Text(t.configScreen.designer),
               contentPadding: EdgeInsets.zero,
             ),
-            const ListTile(
-              title: Text('XXXX XXXX'),
-              subtitle: Text('Tester'),
+            ListTile(
+              title: const Text('XXXX XXXX'),
+              subtitle: Text(t.configScreen.tester),
               contentPadding: EdgeInsets.zero,
+            ),
+            SizedBox(height: 5.h),
+            Text(
+              'Idioma',
+              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+            ),
+            DropdownButton<String>(
+              value: LocaleSettings.currentLocale.languageTag,
+              items: const [
+                DropdownMenuItem(
+                  value: 'en',
+                  child: Text('English'),
+                ),
+                DropdownMenuItem(
+                  value: 'es',
+                  child: Text('Español'),
+                ),
+              ],
+              onChanged: (String? newValue) {
+                if (newValue == null) return;
+                LocaleSettings.setLocaleRaw(newValue);
+                setState(() {});
+              },
             ),
           ],
         ),

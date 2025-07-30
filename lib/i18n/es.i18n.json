@@ -1,0 +1,47 @@
+{
+  "appNavigation": {
+    "home": "Inicio",
+    "history": "Historial",
+    "settings": "Configuración"
+  },
+  "homeScreen": {
+    "buttonText": "Seleccionar Archivo PDF"
+  },
+  "levelScreen": {
+    "title": "Comprensión de PDF",
+    "subtitle": "Selecciona un nivel de comprensión:",
+    "levels": {
+      "low": "Baja",
+      "medium": "Media",
+      "high": "Alta"
+    },
+    "levelsDescription": {
+      "low": "Reducción de tamaño: 20 - 40%",
+      "medium": "Reducción de tamaño: 40 - 60%",
+      "high": "Reducción de tamaño: 60 - 80%"
+    },
+    "buttonText": "Comprimir PDF"
+  },
+  "infoScreen": {
+    "title": "Compresión completada",
+    "subtitle": "Archivo comprimido con éxito.",
+    "description": "Se ha guardado en la carpeta de descargas.",
+    "originalSize": "Tamaño\noriginal: ",
+    "compressedSize": "Tamaño\ncomprimido: ",
+    "compressAnother": "Comprimir otro PDF",
+    "viewCompressed": "Ver PDF comprimido",
+    "deleteCompressed": "Eliminar PDF comprimido"
+  },
+  "historyScreen": {
+    "title": "Historial",
+    "emptyState": "No hay archivos comprimidos aún."
+  },
+  "configScreen": {
+    "title": "Configuración",
+    "not_configs": "Actualmente no hay configuraciones disponibles.",
+    "collaborators": "Colaboradores",
+    "developer": "Desarrollador",
+    "designer": "Diseñador de UI/UX",
+    "tester": "Tester"
+  }
+}

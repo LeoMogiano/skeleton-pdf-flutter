@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:skeleton_pdf/bloc/pdf/pdf_bloc.dart';
 import 'package:skeleton_pdf/config/export_router.dart';
+import 'package:skeleton_pdf/i18n/strings.g.dart';
 
 class CompressInfoScreen extends StatelessWidget {
   const CompressInfoScreen({super.key});
@@ -13,7 +14,7 @@ class CompressInfoScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Compresión completada'),
+        title: Text(t.infoScreen.title),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -21,12 +22,12 @@ class CompressInfoScreen extends StatelessWidget {
           spacing: 20,
           children: [
             Text(
-              'Archivo comprimido con éxito',
+              t.infoScreen.subtitle,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
             ),
             Text(
-              'Se ha guardado en la carpeta de descargas.',
+              t.infoScreen.description,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16.sp, decoration: TextDecoration.underline),
             ),
@@ -47,7 +48,7 @@ class CompressInfoScreen extends StatelessWidget {
                       spacing: 10,
                       children: [
                         Text(
-                          'Tamaño\noriginal',
+                          t.infoScreen.originalSize,
                           textAlign: TextAlign.start,
                           style: TextStyle(fontSize: 16.4.sp, fontWeight: FontWeight.w500),
                         ),
@@ -79,7 +80,7 @@ class CompressInfoScreen extends StatelessWidget {
                       spacing: 10,
                       children: [
                         Text(
-                          'Tamaño\ncomprimido',
+                          t.infoScreen.compressedSize,
                           textAlign: TextAlign.start,
                           style: TextStyle(fontSize: 16.4.sp, fontWeight: FontWeight.w500),
                         ),
@@ -103,7 +104,7 @@ class CompressInfoScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     textStyle: TextStyle(fontSize: 16.sp),
                   ),
-                  child: const Text('Comprimir otro PDF'),
+                  child: Text(t.infoScreen.compressAnother),
                 ),
                 // ver
                 ElevatedButton(
@@ -111,7 +112,7 @@ class CompressInfoScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     textStyle: TextStyle(fontSize: 16.sp),
                   ),
-                  child: const Text('Ver PDF comprimido'),
+                  child: Text(t.infoScreen.viewCompressed),
                 ),
 
                 // Eliminar PDF
@@ -124,7 +125,7 @@ class CompressInfoScreen extends StatelessWidget {
                     textStyle: TextStyle(fontSize: 16.sp),
                     backgroundColor: Colors.red,
                   ),
-                  child: const Text('Eliminar PDF comprimido'),
+                  child: Text(t.infoScreen.deleteCompressed),
                 ),
               ],
             ),

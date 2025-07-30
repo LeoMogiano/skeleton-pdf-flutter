@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
 import 'package:skeleton_pdf/bloc/pdf/pdf_bloc.dart';
 import 'package:skeleton_pdf/config/export_router.dart';
+import 'package:skeleton_pdf/i18n/strings.g.dart';
 import 'package:skeleton_pdf/services/pdf_service.dart';
 import 'package:skeleton_pdf/widgets/custom_snackbar.dart';
 
@@ -19,7 +20,7 @@ class CompressionLevelScreen extends StatelessWidget {
     final pdfState = context.watch<PdfBloc>().state;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Compresión de PDF'),
+        title: Text(t.levelScreen.title),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -29,13 +30,13 @@ class CompressionLevelScreen extends StatelessWidget {
               spacing: 10,
               children: [
                 Text(
-                  'Selecciona el nivel de compresión:',
+                  t.levelScreen.subtitle,
                   style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
                 ),
 
                 LevelWidget(
-                  level: 'Baja',
-                  description: 'Reducción de tamaño: 20-40%',
+                  level: t.levelScreen.levels.low,
+                  description: t.levelScreen.levelsDescription.low,
                   isSelected: pdfState.currentPdf?.compressionLevel == CompressionLevel.low,
                   onTap: () => context.read<PdfBloc>().add(
                     PdfSetCompressionLevelEvent(
@@ -44,8 +45,8 @@ class CompressionLevelScreen extends StatelessWidget {
                   ),
                 ),
                 LevelWidget(
-                  level: 'Media',
-                  description: 'Reducción de tamaño: 40-60%',
+                  level: t.levelScreen.levels.medium,
+                  description: t.levelScreen.levelsDescription.medium,
                   isSelected: pdfState.currentPdf?.compressionLevel == CompressionLevel.medium,
                   onTap: () => context.read<PdfBloc>().add(
                     PdfSetCompressionLevelEvent(
@@ -54,8 +55,8 @@ class CompressionLevelScreen extends StatelessWidget {
                   ),
                 ),
                 LevelWidget(
-                  level: 'Alta',
-                  description: 'Reducción de tamaño: 60-80%',
+                  level: t.levelScreen.levels.high,
+                  description: t.levelScreen.levelsDescription.high,
                   isSelected: pdfState.currentPdf?.compressionLevel == CompressionLevel.high,
                   onTap: () => context.read<PdfBloc>().add(
                     PdfSetCompressionLevelEvent(
@@ -98,7 +99,7 @@ class CompressionLevelScreen extends StatelessWidget {
                             : Colors.blue,
                       ),
                       child: Text(
-                        'Comprimir PDF',
+                        t.levelScreen.buttonText,
                         style: TextStyle(fontSize: 16.sp),
                       ),
                     );
@@ -116,7 +117,9 @@ class CompressionLevelScreen extends StatelessWidget {
 
 class LevelWidget extends StatelessWidget {
   const LevelWidget({
-    required this.level, required this.description, super.key,
+    required this.level,
+    required this.description,
+    super.key,
     this.isSelected = false,
     this.onTap,
   });
