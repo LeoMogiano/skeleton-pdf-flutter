@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -17,11 +20,22 @@ void main() async {
         ? HydratedStorageDirectory.web
         : HydratedStorageDirectory((await getApplicationSupportDirectory()).path),
   );
+  if (Platform.isAndroid) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.white,
+        statusBarColor: Colors.white,
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+    );
+  }
   runApp(
     DevicePreview(
       // We can use DevicePreview to test the app on different screen sizes and orientations
       // ignore: avoid_redundant_argument_values
-      enabled: !kReleaseMode,
+      enabled: false,
       builder: (context) => const MyApp(),
     ),
   );

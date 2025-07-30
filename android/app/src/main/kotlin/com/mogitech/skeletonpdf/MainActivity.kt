@@ -1,7 +1,5 @@
 package com.mogitech.skeletonpdf
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
 import com.mogitech.skeletonpdf.services.CompressionLevel // <--- ADD THIS LINE
 import com.mogitech.skeletonpdf.services.PdfCompressorService // <--- ADD THIS LINE
@@ -15,27 +13,25 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainActivity : FlutterActivity() {
-    private val CHANNEL_NAME = "com.mogitech.skeletonpdf/pdf_compressor"
+    private val skeletonChannel = "com.mogitech.skeletonpdf/pdf_compressor"
     private lateinit var pdfCompressorService: PdfCompressorService
 
-    @RequiresApi(Build.VERSION_CODES.Q)
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
 
          pdfCompressorService = PdfCompressorService(this)
 
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL_NAME)
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, skeletonChannel)
              .setMethodCallHandler { call, result ->
                  handleMethodCall(call, result)
              }
     }
 
-    @RequiresApi(Build.VERSION_CODES.Q)
     private fun handleMethodCall(call: MethodCall, result: MethodChannel.Result) {
         when (call.method) {
             "compressPdf" -> {
                 // Aquí usamos tu servicio
-                val args = call.arguments as Map<String, Any>
+                val args = call.arguments as Map<*, *>
                 val uriString = args["inputUri"] as String
                 val levelString = args["level"] as String
                 val inputUri = uriString.toUri()
