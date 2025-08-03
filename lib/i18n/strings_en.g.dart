@@ -54,8 +54,14 @@ class TranslationsAppNavigationEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en: 'Home'
 	String get home => 'Home';
+
+	/// en: 'History'
 	String get history => 'History';
+
+	/// en: 'Settings'
 	String get settings => 'Settings';
 }
 
@@ -66,6 +72,8 @@ class TranslationsHomeScreenEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en: 'Select PDF File'
 	String get buttonText => 'Select PDF File';
 }
 
@@ -76,10 +84,17 @@ class TranslationsLevelScreenEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en: 'PDF Compression'
 	String get title => 'PDF Compression';
+
+	/// en: 'Select a compression level:'
 	String get subtitle => 'Select a compression level:';
+
 	late final TranslationsLevelScreenLevelsEn levels = TranslationsLevelScreenLevelsEn._(_root);
 	late final TranslationsLevelScreenLevelsDescriptionEn levelsDescription = TranslationsLevelScreenLevelsDescriptionEn._(_root);
+
+	/// en: 'Compress PDF'
 	String get buttonText => 'Compress PDF';
 }
 
@@ -90,13 +105,29 @@ class TranslationsInfoScreenEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en: 'Compression Completed'
 	String get title => 'Compression Completed';
+
+	/// en: 'File successfully compressed.'
 	String get subtitle => 'File successfully compressed.';
+
+	/// en: 'It has been saved in the downloads folder.'
 	String get description => 'It has been saved in the downloads folder.';
+
+	/// en: 'Original size: '
 	String get originalSize => 'Original size: ';
+
+	/// en: 'Compressed size: '
 	String get compressedSize => 'Compressed size: ';
+
+	/// en: 'Compress another PDF'
 	String get compressAnother => 'Compress another PDF';
+
+	/// en: 'View compressed PDF'
 	String get viewCompressed => 'View compressed PDF';
+
+	/// en: 'Delete compressed PDF'
 	String get deleteCompressed => 'Delete compressed PDF';
 }
 
@@ -107,7 +138,11 @@ class TranslationsHistoryScreenEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en: 'History'
 	String get title => 'History';
+
+	/// en: 'No compressed files yet.'
 	String get emptyState => 'No compressed files yet.';
 }
 
@@ -118,13 +153,28 @@ class TranslationsConfigScreenEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en: 'Settings'
 	String get title => 'Settings';
+
+	/// en: 'No configurations currently available.'
 	String get not_configs => 'No configurations currently available.';
+
+	/// en: 'Collaborators'
 	String get collaborators => 'Collaborators';
+
+	/// en: 'Developer'
 	String get developer => 'Developer';
+
+	/// en: 'UI/UX Designer'
 	String get designer => 'UI/UX Designer';
+
+	/// en: 'Tester'
 	String get tester => 'Tester';
+
+	/// en: 'Language'
 	String get language => 'Language';
+
 	late final TranslationsConfigScreenLanguageOptionsEn languageOptions = TranslationsConfigScreenLanguageOptionsEn._(_root);
 }
 
@@ -135,8 +185,14 @@ class TranslationsLevelScreenLevelsEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en: 'Low'
 	String get low => 'Low';
+
+	/// en: 'Medium'
 	String get medium => 'Medium';
+
+	/// en: 'High'
 	String get high => 'High';
 }
 
@@ -147,8 +203,14 @@ class TranslationsLevelScreenLevelsDescriptionEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en: 'Size Reduction: 20 - 40%'
 	String get low => 'Size Reduction: 20 - 40%';
+
+	/// en: 'Size Reduction: 40 - 60%'
 	String get medium => 'Size Reduction: 40 - 60%';
+
+	/// en: 'Size Reduction: 60 - 80%'
 	String get high => 'Size Reduction: 60 - 80%';
 }
 
@@ -159,7 +221,11 @@ class TranslationsConfigScreenLanguageOptionsEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en: 'English'
 	String get en => 'English';
+
+	/// en: 'Spanish'
 	String get es => 'Spanish';
 }
 
